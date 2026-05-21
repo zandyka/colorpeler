@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solvinet.id — Color Palette Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #0F1117;
+    color: #fff;
+    min-height: 100vh;
+    padding: 48px 32px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  header h1 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 12px;
+  }
+  header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+  }
+  header p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #1A1D27;
+    border: 1px solid #2A2D3A;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+
+  /* ── Card Header / Hero ── */
+  .card-hero {
+    height: 180px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .card-hero .badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    position: absolute;
+    top: 16px;
+    left: 16px;
+  }
+  .card-hero .rec-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.9);
+    color: #1A2E44;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+  .hero-logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    letter-spacing: -0.5px;
+  }
+  .hero-logo span {
+    opacity: 0.75;
+    font-weight: 500;
+  }
+
+  /* Opsi A */
+  .hero-a {
+    background: linear-gradient(135deg, #1E9EE6 0%, #2EC07A 100%);
+  }
+  /* Opsi B */
+  .hero-b {
+    background: linear-gradient(135deg, #0B72B9 0%, #F5821F 100%);
+  }
+  /* Opsi C */
+  .hero-c {
+    background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  }
+
+  /* ── Swatches ── */
+  .swatches {
+    display: flex;
+    height: 64px;
+  }
+  .swatch {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+    transition: flex 0.3s ease;
+  }
+  .swatch:hover { flex: 1.6; }
+  .swatch:hover .swatch-label { opacity: 1; transform: translateY(0); }
+  .swatch-label {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.2s ease;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  /* ── Swatch Colors A ── */
+  .a1 { background: #1E9EE6; }
+  .a2 { background: #2EC07A; }
+  .a3 { background: #1A2E44; }
+  .a4 { background: #F4F8FC; }
+  .a5 { background: #00C2E0; }
+
+  /* ── Swatch Colors B ── */
+  .b1 { background: #0B72B9; }
+  .b2 { background: #F5821F; }
+  .b3 { background: #222831; }
+  .b4 { background: #FAFAFA; }
+  .b5 { background: #4DAEE8; }
+
+  /* ── Swatch Colors C ── */
+  .c1 { background: #2563EB; }
+  .c2 { background: #7C3AED; }
+  .c3 { background: #1E293B; }
+  .c4 { background: #FFFFFF; }
+  .c5 { background: #818CF8; }
+
+  /* ── Color Detail List ── */
+  .color-list {
+    padding: 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .color-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .color-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .color-info { flex: 1; }
+  .color-role {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 2px;
+  }
+  .color-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ddd;
+  }
+  .color-hex {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    color: #888;
+    background: #12141C;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #2A2D3A;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .color-hex:hover { background: #1E2130; color: #ccc; }
+
+  /* ── Mock UI Preview ── */
+  .mock-ui {
+    margin: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #2A2D3A;
+  }
+
+  /* Mock A */
+  .mock-a {
+    background: #F4F8FC;
+    padding: 16px;
+  }
+  .mock-a .m-header {
+    background: #1E9EE6;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px 8px 0 0;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -16px -16px 12px;
+  }
+  .mock-a .m-header .dot-group { display: flex; gap: 5px; }
+  .mock-a .m-header .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+  .mock-a .m-tag {
+    display: inline-block;
+    background: #2EC07A;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .mock-a .m-title { font-size: 13px; font-weight: 700; color: #1A2E44; margin-bottom: 4px; }
+  .mock-a .m-sub { font-size: 10px; color: #6B8EA8; margin-bottom: 10px; }
+  .mock-a .m-btn {
+    background: #1E9EE6;
+    color: #fff;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  .mock-a .m-btn-2 {
+    background: transparent;
+    color: #1A2E44;
+    border: 1px solid #CBD8E4;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .mock-a .m-price { font-size: 18px; font-weight: 800; color: #00C2E0; margin-bottom: 2px; }
+
+  /* Mock B */
+  .mock-b {
+    background: #FAFAFA;
+    padding: 16px;
+  }
+  .mock-b .m-header {
+    background: #0B72B9;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px 8px 0 0;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -16px -16px 12px;
+  }
+  .mock-b .m-header .dot-group { display: flex; gap: 5px; }
+  .mock-b .m-header .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+  .mock-b .m-tag {
+    display: inline-block;
+    background: #F5821F;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .mock-b .m-title { font-size: 13px; font-weight: 700; color: #222831; margin-bottom: 4px; }
+  .mock-b .m-sub { font-size: 10px; color: #888; margin-bottom: 10px; }
+  .mock-b .m-btn {
+    background: #F5821F;
+    color: #fff;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  .mock-b .m-btn-2 {
+    background: transparent;
+    color: #222831;
+    border: 1px solid #DDD;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .mock-b .m-price { font-size: 18px; font-weight: 800; color: #0B72B9; margin-bottom: 2px; }
+
+  /* Mock C */
+  .mock-c {
+    background: #FFFFFF;
+    padding: 16px;
+  }
+  .mock-c .m-header {
+    background: linear-gradient(90deg, #2563EB, #7C3AED);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px 8px 0 0;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -16px -16px 12px;
+  }
+  .mock-c .m-header .dot-group { display: flex; gap: 5px; }
+  .mock-c .m-header .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+  .mock-c .m-tag {
+    display: inline-block;
+    background: #818CF8;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .mock-c .m-title { font-size: 13px; font-weight: 700; color: #1E293B; margin-bottom: 4px; }
+  .mock-c .m-sub { font-size: 10px; color: #94A3B8; margin-bottom: 10px; }
+  .mock-c .m-btn {
+    background: linear-gradient(90deg, #2563EB, #7C3AED);
+    color: #fff;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  .mock-c .m-btn-2 {
+    background: transparent;
+    color: #1E293B;
+    border: 1px solid #E2E8F0;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .mock-c .m-price { font-size: 18px; font-weight: 800; color: #2563EB; margin-bottom: 2px; }
+
+  /* ── Card Footer ── */
+  .card-footer {
+    padding: 16px 20px 20px;
+    border-top: 1px solid #2A2D3A;
+    margin-top: 8px;
+  }
+  .card-footer p {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+  }
+  .card-footer strong {
+    color: #aaa;
+  }
+
+  /* ── Option Label ── */
+  .option-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #555;
+    text-align: center;
+    padding: 14px;
+  }
+
+  /* Recommended glow */
+  .card-recommended {
+    border-color: #1E9EE6;
+    box-shadow: 0 0 0 1px #1E9EE640, 0 8px 32px rgba(30,158,230,0.15);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 12px;
+    color: #444;
+  }
+  footer span { color: #666; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Solvinet.id — Brand Identity</h1>
+  <h2>Color Palette Preview</h2>
+  <p>Hover pada swatch warna untuk melihat nama. Klik HEX code untuk menyalin.</p>
+</header>
+
+<div class="grid">
+
+  <!-- OPSI A -->
+  <div class="card card-recommended">
+    <div class="card-hero hero-a">
+      <div class="badge">Opsi A</div>
+      <div class="rec-badge">⭐ Rekomendasi</div>
+      <div class="hero-logo">Solvinet<span>.id</span></div>
+    </div>
+    <div class="swatches">
+      <div class="swatch a1"><span class="swatch-label">Sky Blue</span></div>
+      <div class="swatch a2"><span class="swatch-label">Fresh Green</span></div>
+      <div class="swatch a3"><span class="swatch-label">Navy Soft</span></div>
+      <div class="swatch a4"><span class="swatch-label">Off White</span></div>
+      <div class="swatch a5"><span class="swatch-label">Bright Cyan</span></div>
+    </div>
+    <div class="color-list">
+      <div class="color-row">
+        <div class="color-dot a1"></div>
+        <div class="color-info"><div class="color-role">Primary</div><div class="color-name">Sky Blue</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#1E9EE6</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot a2"></div>
+        <div class="color-info"><div class="color-role">Secondary</div><div class="color-name">Fresh Green</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#2EC07A</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot a3"></div>
+        <div class="color-info"><div class="color-role">Dark / Text</div><div class="color-name">Navy Soft</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#1A2E44</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot a4" style="border:1px solid #CBD8E4"></div>
+        <div class="color-info"><div class="color-role">Background</div><div class="color-name">Off White</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#F4F8FC</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot a5"></div>
+        <div class="color-info"><div class="color-role">Accent / CTA</div><div class="color-name">Bright Cyan</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#00C2E0</div>
+      </div>
+    </div>
+    <div class="mock-ui mock-a">
+      <div class="m-header">
+        <span>Solvinet.id</span>
+        <div class="dot-group"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="m-tag">Paket Hemat</div>
+      <div class="m-title">Internet 50 Mbps</div>
+      <div class="m-sub">Cocok untuk rumahan & usaha kecil</div>
+      <div class="m-price">Rp 199.000<span style="font-size:11px;font-weight:500;color:#6B8EA8">/bulan</span></div>
+      <button class="m-btn">Langganan</button>
+      <button class="m-btn-2">Detail</button>
+    </div>
+    <div class="card-footer">
+      <p><strong>Kesan:</strong> Teknologi yang segar & ramah. Biru = kepercayaan, Hijau = hemat & positif. <strong>Unik di antara kompetitor lokal.</strong></p>
+    </div>
+  </div>
+
+  <!-- OPSI B -->
+  <div class="card">
+    <div class="card-hero hero-b">
+      <div class="badge">Opsi B</div>
+      <div class="hero-logo">Solvinet<span>.id</span></div>
+    </div>
+    <div class="swatches">
+      <div class="swatch b1"><span class="swatch-label">Ocean Blue</span></div>
+      <div class="swatch b2"><span class="swatch-label">Warm Orange</span></div>
+      <div class="swatch b3"><span class="swatch-label">Charcoal</span></div>
+      <div class="swatch b4"><span class="swatch-label">Warm White</span></div>
+      <div class="swatch b5"><span class="swatch-label">Light Blue</span></div>
+    </div>
+    <div class="color-list">
+      <div class="color-row">
+        <div class="color-dot b1"></div>
+        <div class="color-info"><div class="color-role">Primary</div><div class="color-name">Ocean Blue</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#0B72B9</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot b2"></div>
+        <div class="color-info"><div class="color-role">Secondary</div><div class="color-name">Warm Orange</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#F5821F</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot b3"></div>
+        <div class="color-info"><div class="color-role">Dark / Text</div><div class="color-name">Charcoal</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#222831</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot b4" style="border:1px solid #DDD"></div>
+        <div class="color-info"><div class="color-role">Background</div><div class="color-name">Warm White</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#FAFAFA</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot b5"></div>
+        <div class="color-info"><div class="color-role">Accent / CTA</div><div class="color-name">Light Blue</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#4DAEE8</div>
+      </div>
+    </div>
+    <div class="mock-ui mock-b">
+      <div class="m-header">
+        <span>Solvinet.id</span>
+        <div class="dot-group"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="m-tag">Paket Hemat</div>
+      <div class="m-title">Internet 50 Mbps</div>
+      <div class="m-sub">Cocok untuk rumahan & usaha kecil</div>
+      <div class="m-price">Rp 199.000<span style="font-size:11px;font-weight:500;color:#888">/bulan</span></div>
+      <button class="m-btn">Langganan</button>
+      <button class="m-btn-2">Detail</button>
+    </div>
+    <div class="card-footer">
+      <p><strong>Kesan:</strong> Profesional tapi hangat dan merakyat. Oranye memberi energi & keakraban. Mirip IndiHome tapi lebih modern & bersih.</p>
+    </div>
+  </div>
+
+  <!-- OPSI C -->
+  <div class="card">
+    <div class="card-hero hero-c">
+      <div class="badge">Opsi C</div>
+      <div class="hero-logo">Solvinet<span>.id</span></div>
+    </div>
+    <div class="swatches">
+      <div class="swatch c1"><span class="swatch-label">Electric Blue</span></div>
+      <div class="swatch c2"><span class="swatch-label">Soft Purple</span></div>
+      <div class="swatch c3"><span class="swatch-label">Dark Slate</span></div>
+      <div class="swatch c4"><span class="swatch-label">Pure White</span></div>
+      <div class="swatch c5"><span class="swatch-label">Indigo Light</span></div>
+    </div>
+    <div class="color-list">
+      <div class="color-row">
+        <div class="color-dot c1"></div>
+        <div class="color-info"><div class="color-role">Primary</div><div class="color-name">Electric Blue</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#2563EB</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot c2"></div>
+        <div class="color-info"><div class="color-role">Secondary</div><div class="color-name">Soft Purple</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#7C3AED</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot c3"></div>
+        <div class="color-info"><div class="color-role">Dark / Text</div><div class="color-name">Dark Slate</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#1E293B</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot c4" style="border:1px solid #E2E8F0"></div>
+        <div class="color-info"><div class="color-role">Background</div><div class="color-name">Pure White</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#FFFFFF</div>
+      </div>
+      <div class="color-row">
+        <div class="color-dot c5"></div>
+        <div class="color-info"><div class="color-role">Accent / CTA</div><div class="color-name">Indigo Light</div></div>
+        <div class="color-hex" onclick="copyHex(this)">#818CF8</div>
+      </div>
+    </div>
+    <div class="mock-ui mock-c">
+      <div class="m-header">
+        <span>Solvinet.id</span>
+        <div class="dot-group"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="m-tag">Paket Hemat</div>
+      <div class="m-title">Internet 50 Mbps</div>
+      <div class="m-sub">Cocok untuk rumahan & usaha kecil</div>
+      <div class="m-price">Rp 199.000<span style="font-size:11px;font-weight:500;color:#94A3B8">/bulan</span></div>
+      <button class="m-btn">Langganan</button>
+      <button class="m-btn-2">Detail</button>
+    </div>
+    <div class="card-footer">
+      <p><strong>Kesan:</strong> Inovatif & tech-forward. Gradien biru-ungu populer di brand teknologi global. Lebih premium, kurang "merakyat".</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Solvinet.id Brand Identity — Color Palette Preview</span><br>
+  Klik HEX code untuk menyalin • Hover swatch untuk nama warna
+</footer>
+
+<script>
+  function copyHex(el) {
+    const hex = el.textContent.trim();
+    navigator.clipboard.writeText(hex).then(() => {
+      const orig = el.textContent;
+      el.textContent = 'Copied!';
+      el.style.color = '#4ade80';
+      setTimeout(() => {
+        el.textContent = orig;
+        el.style.color = '';
+      }, 1200);
+    });
+  }
+</script>
+
+</body>
+</html>
