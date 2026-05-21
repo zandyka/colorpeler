@@ -427,6 +427,41 @@
     color: #444;
   }
   footer span { color: #666; }
+  /* ── Responsive Mobile ── */
+  @media (max-width: 768px) {
+    body {
+      padding: 32px 16px;
+    }
+    header {
+      margin-bottom: 32px;
+    }
+    header h2 {
+      font-size: 24px;
+    }
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .card-hero {
+      height: 140px;
+    }
+    .swatches {
+      height: 48px;
+    }
+    .swatch-label {
+      font-size: 8px;
+      bottom: 4px;
+    }
+    .color-list {
+      padding: 16px 16px 0;
+    }
+    .mock-ui {
+      margin: 16px;
+    }
+    .card-footer {
+      padding: 16px;
+    }
+  }
 </style>
 </head>
 <body>
