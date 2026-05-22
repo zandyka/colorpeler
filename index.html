@@ -1,670 +1,679 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solvinet.id — Color Palette Preview</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solvinet.id — Logo System</title>
+  <meta name="description" content="Solvinet.id brand logo: organic network blob, node topology, blue-to-purple gradient.">
+  <style>
+    /* ── Google Font ────────────────────────────────────── */
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
 
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #0F1117;
-    color: #fff;
-    min-height: 100vh;
-    padding: 48px 32px;
-  }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  header {
-    text-align: center;
-    margin-bottom: 56px;
-  }
-  header h1 {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 12px;
-  }
-  header h2 {
-    font-size: 32px;
-    font-weight: 800;
-    color: #fff;
-  }
-  header p {
-    margin-top: 8px;
-    font-size: 14px;
-    color: #666;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 32px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .card {
-    border-radius: 20px;
-    overflow: hidden;
-    background: #1A1D27;
-    border: 1px solid #2A2D3A;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
-  }
-
-  /* ── Card Header / Hero ── */
-  .card-hero {
-    height: 180px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  .card-hero .badge {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    backdrop-filter: blur(8px);
-    position: absolute;
-    top: 16px;
-    left: 16px;
-  }
-  .card-hero .rec-badge {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.9);
-    color: #1A2E44;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-  }
-  .hero-logo {
-    font-size: 22px;
-    font-weight: 800;
-    color: #fff;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    letter-spacing: -0.5px;
-  }
-  .hero-logo span {
-    opacity: 0.75;
-    font-weight: 500;
-  }
-
-  /* Opsi A */
-  .hero-a {
-    background: linear-gradient(135deg, #1E9EE6 0%, #2EC07A 100%);
-  }
-  /* Opsi B */
-  .hero-b {
-    background: linear-gradient(135deg, #0B72B9 0%, #F5821F 100%);
-  }
-  /* Opsi C */
-  .hero-c {
-    background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
-  }
-
-  /* ── Swatches ── */
-  .swatches {
-    display: flex;
-    height: 64px;
-  }
-  .swatch {
-    flex: 1;
-    position: relative;
-    cursor: pointer;
-    transition: flex 0.3s ease;
-  }
-  .swatch:hover { flex: 1.6; }
-  .swatch:hover .swatch-label { opacity: 1; transform: translateY(0); }
-  .swatch-label {
-    position: absolute;
-    bottom: 6px;
-    left: 50%;
-    transform: translateX(-50%) translateY(4px);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: rgba(255,255,255,0.85);
-    text-align: center;
-    white-space: nowrap;
-    opacity: 0;
-    transition: all 0.2s ease;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-  }
-
-  /* ── Swatch Colors A ── */
-  .a1 { background: #1E9EE6; }
-  .a2 { background: #2EC07A; }
-  .a3 { background: #1A2E44; }
-  .a4 { background: #F4F8FC; }
-  .a5 { background: #00C2E0; }
-
-  /* ── Swatch Colors B ── */
-  .b1 { background: #0B72B9; }
-  .b2 { background: #F5821F; }
-  .b3 { background: #222831; }
-  .b4 { background: #FAFAFA; }
-  .b5 { background: #4DAEE8; }
-
-  /* ── Swatch Colors C ── */
-  .c1 { background: #2563EB; }
-  .c2 { background: #7C3AED; }
-  .c3 { background: #1E293B; }
-  .c4 { background: #FFFFFF; }
-  .c5 { background: #818CF8; }
-
-  /* ── Color Detail List ── */
-  .color-list {
-    padding: 20px 20px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .color-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .color-dot {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    flex-shrink: 0;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .color-info { flex: 1; }
-  .color-role {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #666;
-    margin-bottom: 2px;
-  }
-  .color-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #ddd;
-  }
-  .color-hex {
-    font-size: 12px;
-    font-weight: 600;
-    font-family: 'Courier New', monospace;
-    color: #888;
-    background: #12141C;
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid #2A2D3A;
-    cursor: pointer;
-    transition: background 0.2s;
-    flex-shrink: 0;
-  }
-  .color-hex:hover { background: #1E2130; color: #ccc; }
-
-  /* ── Mock UI Preview ── */
-  .mock-ui {
-    margin: 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #2A2D3A;
-  }
-
-  /* Mock A */
-  .mock-a {
-    background: #F4F8FC;
-    padding: 16px;
-  }
-  .mock-a .m-header {
-    background: #1E9EE6;
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 8px 8px 0 0;
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: -16px -16px 12px;
-  }
-  .mock-a .m-header .dot-group { display: flex; gap: 5px; }
-  .mock-a .m-header .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); }
-  .mock-a .m-tag {
-    display: inline-block;
-    background: #2EC07A;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 999px;
-    margin-bottom: 8px;
-  }
-  .mock-a .m-title { font-size: 13px; font-weight: 700; color: #1A2E44; margin-bottom: 4px; }
-  .mock-a .m-sub { font-size: 10px; color: #6B8EA8; margin-bottom: 10px; }
-  .mock-a .m-btn {
-    background: #1E9EE6;
-    color: #fff;
-    border: none;
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-right: 8px;
-  }
-  .mock-a .m-btn-2 {
-    background: transparent;
-    color: #1A2E44;
-    border: 1px solid #CBD8E4;
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .mock-a .m-price { font-size: 18px; font-weight: 800; color: #00C2E0; margin-bottom: 2px; }
-
-  /* Mock B */
-  .mock-b {
-    background: #FAFAFA;
-    padding: 16px;
-  }
-  .mock-b .m-header {
-    background: #0B72B9;
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 8px 8px 0 0;
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: -16px -16px 12px;
-  }
-  .mock-b .m-header .dot-group { display: flex; gap: 5px; }
-  .mock-b .m-header .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); }
-  .mock-b .m-tag {
-    display: inline-block;
-    background: #F5821F;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 999px;
-    margin-bottom: 8px;
-  }
-  .mock-b .m-title { font-size: 13px; font-weight: 700; color: #222831; margin-bottom: 4px; }
-  .mock-b .m-sub { font-size: 10px; color: #888; margin-bottom: 10px; }
-  .mock-b .m-btn {
-    background: #F5821F;
-    color: #fff;
-    border: none;
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-right: 8px;
-  }
-  .mock-b .m-btn-2 {
-    background: transparent;
-    color: #222831;
-    border: 1px solid #DDD;
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .mock-b .m-price { font-size: 18px; font-weight: 800; color: #0B72B9; margin-bottom: 2px; }
-
-  /* Mock C */
-  .mock-c {
-    background: #FFFFFF;
-    padding: 16px;
-  }
-  .mock-c .m-header {
-    background: linear-gradient(90deg, #2563EB, #7C3AED);
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 8px 8px 0 0;
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: -16px -16px 12px;
-  }
-  .mock-c .m-header .dot-group { display: flex; gap: 5px; }
-  .mock-c .m-header .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); }
-  .mock-c .m-tag {
-    display: inline-block;
-    background: #818CF8;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 999px;
-    margin-bottom: 8px;
-  }
-  .mock-c .m-title { font-size: 13px; font-weight: 700; color: #1E293B; margin-bottom: 4px; }
-  .mock-c .m-sub { font-size: 10px; color: #94A3B8; margin-bottom: 10px; }
-  .mock-c .m-btn {
-    background: linear-gradient(90deg, #2563EB, #7C3AED);
-    color: #fff;
-    border: none;
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-right: 8px;
-  }
-  .mock-c .m-btn-2 {
-    background: transparent;
-    color: #1E293B;
-    border: 1px solid #E2E8F0;
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .mock-c .m-price { font-size: 18px; font-weight: 800; color: #2563EB; margin-bottom: 2px; }
-
-  /* ── Card Footer ── */
-  .card-footer {
-    padding: 16px 20px 20px;
-    border-top: 1px solid #2A2D3A;
-    margin-top: 8px;
-  }
-  .card-footer p {
-    font-size: 12px;
-    color: #666;
-    line-height: 1.6;
-  }
-  .card-footer strong {
-    color: #aaa;
-  }
-
-  /* ── Option Label ── */
-  .option-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #555;
-    text-align: center;
-    padding: 14px;
-  }
-
-  /* Recommended glow */
-  .card-recommended {
-    border-color: #1E9EE6;
-    box-shadow: 0 0 0 1px #1E9EE640, 0 8px 32px rgba(30,158,230,0.15);
-  }
-
-  footer {
-    text-align: center;
-    margin-top: 48px;
-    font-size: 12px;
-    color: #444;
-  }
-  footer span { color: #666; }
-  /* ── Responsive Mobile ── */
-  @media (max-width: 768px) {
+    /* ── Page ───────────────────────────────────────────── */
     body {
-      padding: 32px 16px;
+      font-family: 'Sora', sans-serif;
+      background: #EEF2FF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 24px 88px;
     }
-    header {
+
+    /* ── Page header ────────────────────────────────────── */
+    .pg-head {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .pg-head-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #7C3AED;
+      margin-bottom: 10px;
+    }
+    .pg-head h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1E293B;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .pg-head p {
+      font-size: 13px;
+      color: #94A3B8;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Sections ───────────────────────────────────────── */
+    .section {
+      width: 100%;
+      max-width: 860px;
       margin-bottom: 32px;
     }
-    header h2 {
-      font-size: 24px;
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #94A3B8;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #DDE3F0;
     }
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
+    /* Gradient pill accent */
+    .section-label::before {
+      content: '';
+      flex-shrink: 0;
+      width: 22px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2563EB, #7C3AED);
     }
-    .card-hero {
-      height: 140px;
+
+    /* ── Display panels ─────────────────────────────────── */
+    .panel {
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-radius: 24px;
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 48px;
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.04),
+        0 8px 32px rgba(37,99,235,0.07);
     }
-    .swatches {
-      height: 48px;
+    .panel.dark {
+      background: #1E293B;
+      border-color: #334155;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     }
-    .swatch-label {
-      font-size: 8px;
-      bottom: 4px;
+
+    /* ── Size variant wrappers ──────────────────────────── */
+    .v-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
     }
-    .color-list {
-      padding: 16px 16px 0;
+    .v-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #94A3B8;
     }
-    .mock-ui {
-      margin: 16px;
+
+    /* ── Separator ──────────────────────────────────────── */
+    .v-separator {
+      width: 1px;
+      height: 80px;
+      background: #E2E8F0;
+      align-self: center;
     }
-    .card-footer {
-      padding: 16px;
+    .panel.dark .v-separator { background: #334155; }
+
+    /* ── Download button ────────────────────────────────── */
+    .dl-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 8px;
     }
-  }
-</style>
+    #dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow:
+        0 1px 2px rgba(37,99,235,0.2),
+        0 8px 28px rgba(37,99,235,0.38);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    #dl-btn:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 1px 2px rgba(37,99,235,0.2),
+        0 16px 40px rgba(37,99,235,0.45);
+    }
+    #dl-btn:active { transform: translateY(0); }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .panel      { padding: 36px 24px; gap: 28px; }
+      body        { padding: 40px 16px 64px; }
+      .pg-head h1 { font-size: 22px; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>Solvinet.id — Brand Identity</h1>
-  <h2>Color Palette Preview</h2>
-  <p>Hover pada swatch warna untuk melihat nama. Klik HEX code untuk menyalin.</p>
+<!-- ═══════════════════════════════════════════════════════
+     SHARED SVG DEFINITIONS  (off-screen, zero dimensions)
+     Contains the gradient and all reusable symbols.
+     ─ sym-icon    : 120×120 icon mark only
+     ─ sym-logo    : 370×130 full logo, light wordmark
+     ─ sym-logo-dk : 370×130 full logo, dark-bg wordmark
+═══════════════════════════════════════════════════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+     style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+
+    <!-- ── Brand gradient ──────────────────────────────── -->
+    <!-- #2563EB (bottom-left) → #7C3AED (top-right)       -->
+    <linearGradient id="g" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+
+    <!-- ══════════════════════════════════════════════════
+         ICON SYMBOL  —  120 × 120
+         ────────────────────────────────────────────────
+         Layer 1 · Organic blob (gradient fill)
+           8-anchor cubic-bezier closed path, clockwise
+           from top. Smooth G1 continuity at each anchor.
+
+         Layer 2 · Network edges
+           12 straight-line connections between 8 nodes.
+           stroke: white 3px rounded, drawn before nodes
+           so nodes appear on top.
+
+         Layer 3 · Network nodes
+           8 white filled circles representing topology
+           endpoints. Center hub (N4) is r=7 (larger) to
+           indicate primary hub status.
+
+         Layer 4 · Sparkle ✦
+           4-point star via quadratic bezier curves.
+           Center ≈ (88, 22), outer R=8, inner r≈2.5.
+    ══════════════════════════════════════════════════ -->
+    <symbol id="sym-icon" viewBox="0 0 120 120">
+
+      <!-- ── Layer 1 · Blob ──────────────────────────── -->
+      <!--
+        Anchor points (clockwise from top):
+          (62,8)→(98,16)→(112,52)→(98,86)→
+          (66,110)→(30,102)→(8,66)→(20,26)→close
+        Control points maintain G1 tangent continuity.
+      -->
+      <path
+        d="
+          M  62,  8
+          C  78,  4   90,  8   98, 16
+          C 106, 24  114, 40  112, 52
+          C 110, 64  104, 76   98, 86
+          C  90, 96   78,108   66,110
+          C  54,112   40,110   30,102
+          C  20, 94   10, 80    8, 66
+          C   6, 50   12, 36   20, 26
+          C  30, 18   48, 10   62,  8
+          Z
+        "
+        fill="url(#g)"/>
+
+      <!-- ── Layer 2 · Network edges ──────────────────── -->
+      <!--
+        Node positions:
+          N1 (68,26)  N2 (44,34)  N3 (28,58)
+          N4 (56,58)  N5 (80,44)  N6 (86,72)
+          N7 (64,90)  N8 (36,86)
+
+        Edge list (12 connections):
+          N1→N2  N2→N3  N3→N4  N4→N6  N6→N7
+          N7→N8  N8→N3  N1→N5  N5→N4  N5→N6
+          N4→N8  N2→N4
+      -->
+      <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round">
+        <line x1="68" y1="26"  x2="44" y2="34"/>   <!-- N1→N2 -->
+        <line x1="44" y1="34"  x2="28" y2="58"/>   <!-- N2→N3 -->
+        <line x1="28" y1="58"  x2="56" y2="58"/>   <!-- N3→N4 -->
+        <line x1="56" y1="58"  x2="86" y2="72"/>   <!-- N4→N6 -->
+        <line x1="86" y1="72"  x2="64" y2="90"/>   <!-- N6→N7 -->
+        <line x1="64" y1="90"  x2="36" y2="86"/>   <!-- N7→N8 -->
+        <line x1="36" y1="86"  x2="28" y2="58"/>   <!-- N8→N3 -->
+        <line x1="68" y1="26"  x2="80" y2="44"/>   <!-- N1→N5 -->
+        <line x1="80" y1="44"  x2="56" y2="58"/>   <!-- N5→N4 -->
+        <line x1="80" y1="44"  x2="86" y2="72"/>   <!-- N5→N6 -->
+        <line x1="56" y1="58"  x2="36" y2="86"/>   <!-- N4→N8 -->
+        <line x1="44" y1="34"  x2="56" y2="58"/>   <!-- N2→N4 -->
+      </g>
+
+      <!-- ── Layer 3 · Network nodes ──────────────────── -->
+      <g fill="white">
+        <circle cx="68" cy="26" r="5"/>    <!-- N1 -->
+        <circle cx="44" cy="34" r="5"/>    <!-- N2 -->
+        <circle cx="28" cy="58" r="5"/>    <!-- N3 -->
+        <circle cx="56" cy="58" r="7"/>    <!-- N4 · hub (larger) -->
+        <circle cx="80" cy="44" r="5"/>    <!-- N5 -->
+        <circle cx="86" cy="72" r="5"/>    <!-- N6 -->
+        <circle cx="64" cy="90" r="5"/>    <!-- N7 -->
+        <circle cx="36" cy="86" r="5"/>    <!-- N8 -->
+      </g>
+
+      <!-- ── Layer 4 · Sparkle ✦ ──────────────────────── -->
+      <!--
+        4 quadratic bezier curves, each from one outer tip
+        to the next, with a tight inner control point.
+        Tips: top(88,14) right(96,22) bottom(88,30) left(80,22)
+        Inner controls at approx r=2.5 from center (88,22).
+      -->
+      <path
+        d="
+          M  88, 14
+          Q  90.5, 19.5   96, 22
+          Q  90.5, 24.5   88, 30
+          Q  85.5, 24.5   80, 22
+          Q  85.5, 19.5   88, 14
+          Z
+        "
+        fill="white"/>
+
+    </symbol><!-- /sym-icon -->
+
+
+    <!-- ══════════════════════════════════════════════════
+         FULL LOGO — LIGHT  —  370 × 130
+         Icon at offset (5,5) + light-bg wordmark
+    ══════════════════════════════════════════════════ -->
+    <symbol id="sym-logo" viewBox="0 0 370 130">
+
+      <!-- Icon group translated to (5,5) in 370×130 space -->
+      <g transform="translate(5,5)">
+        <path d="M 62,8 C 78,4 90,8 98,16 C 106,24 114,40 112,52 C 110,64 104,76 98,86 C 90,96 78,108 66,110 C 54,112 40,110 30,102 C 20,94 10,80 8,66 C 6,50 12,36 20,26 C 30,18 48,10 62,8 Z" fill="url(#g)"/>
+        <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round">
+          <line x1="68" y1="26" x2="44" y2="34"/>
+          <line x1="44" y1="34" x2="28" y2="58"/>
+          <line x1="28" y1="58" x2="56" y2="58"/>
+          <line x1="56" y1="58" x2="86" y2="72"/>
+          <line x1="86" y1="72" x2="64" y2="90"/>
+          <line x1="64" y1="90" x2="36" y2="86"/>
+          <line x1="36" y1="86" x2="28" y2="58"/>
+          <line x1="68" y1="26" x2="80" y2="44"/>
+          <line x1="80" y1="44" x2="56" y2="58"/>
+          <line x1="80" y1="44" x2="86" y2="72"/>
+          <line x1="56" y1="58" x2="36" y2="86"/>
+          <line x1="44" y1="34" x2="56" y2="58"/>
+        </g>
+        <g fill="white">
+          <circle cx="68" cy="26" r="5"/>
+          <circle cx="44" cy="34" r="5"/>
+          <circle cx="28" cy="58" r="5"/>
+          <circle cx="56" cy="58" r="7"/>
+          <circle cx="80" cy="44" r="5"/>
+          <circle cx="86" cy="72" r="5"/>
+          <circle cx="64" cy="90" r="5"/>
+          <circle cx="36" cy="86" r="5"/>
+        </g>
+        <path d="M 88,14 Q 90.5,19.5 96,22 Q 90.5,24.5 88,30 Q 85.5,24.5 80,22 Q 85.5,19.5 88,14 Z" fill="white"/>
+      </g>
+
+      <!-- Wordmark: x = 5+120+16 = 141, y = 5+60 = 65 -->
+      <text
+        x="141" y="65"
+        dominant-baseline="central"
+        font-family="'Sora', sans-serif"
+        font-size="32"
+        letter-spacing="-0.5">
+        <tspan font-weight="700" fill="#1E293B">Solvinet</tspan>
+        <tspan font-weight="400" fill="#7C3AED">.id</tspan>
+      </text>
+
+    </symbol><!-- /sym-logo -->
+
+
+    <!-- ══════════════════════════════════════════════════
+         FULL LOGO — DARK  —  370 × 130
+         Same icon, white + light-indigo wordmark
+    ══════════════════════════════════════════════════ -->
+    <symbol id="sym-logo-dk" viewBox="0 0 370 130">
+
+      <g transform="translate(5,5)">
+        <path d="M 62,8 C 78,4 90,8 98,16 C 106,24 114,40 112,52 C 110,64 104,76 98,86 C 90,96 78,108 66,110 C 54,112 40,110 30,102 C 20,94 10,80 8,66 C 6,50 12,36 20,26 C 30,18 48,10 62,8 Z" fill="url(#g)"/>
+        <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round">
+          <line x1="68" y1="26" x2="44" y2="34"/>
+          <line x1="44" y1="34" x2="28" y2="58"/>
+          <line x1="28" y1="58" x2="56" y2="58"/>
+          <line x1="56" y1="58" x2="86" y2="72"/>
+          <line x1="86" y1="72" x2="64" y2="90"/>
+          <line x1="64" y1="90" x2="36" y2="86"/>
+          <line x1="36" y1="86" x2="28" y2="58"/>
+          <line x1="68" y1="26" x2="80" y2="44"/>
+          <line x1="80" y1="44" x2="56" y2="58"/>
+          <line x1="80" y1="44" x2="86" y2="72"/>
+          <line x1="56" y1="58" x2="36" y2="86"/>
+          <line x1="44" y1="34" x2="56" y2="58"/>
+        </g>
+        <g fill="white">
+          <circle cx="68" cy="26" r="5"/>
+          <circle cx="44" cy="34" r="5"/>
+          <circle cx="28" cy="58" r="5"/>
+          <circle cx="56" cy="58" r="7"/>
+          <circle cx="80" cy="44" r="5"/>
+          <circle cx="86" cy="72" r="5"/>
+          <circle cx="64" cy="90" r="5"/>
+          <circle cx="36" cy="86" r="5"/>
+        </g>
+        <path d="M 88,14 Q 90.5,19.5 96,22 Q 90.5,24.5 88,30 Q 85.5,24.5 80,22 Q 85.5,19.5 88,14 Z" fill="white"/>
+      </g>
+
+      <!-- Wordmark: white + light indigo for dark background -->
+      <text
+        x="141" y="65"
+        dominant-baseline="central"
+        font-family="'Sora', sans-serif"
+        font-size="32"
+        letter-spacing="-0.5">
+        <tspan font-weight="700" fill="#FFFFFF">Solvinet</tspan>
+        <tspan font-weight="400" fill="#818CF8">.id</tspan>
+      </text>
+
+    </symbol><!-- /sym-logo-dk -->
+
+  </defs>
+</svg><!-- end shared defs -->
+
+
+<!-- ═══════════════════════════
+     PAGE HEADER
+═══════════════════════════ -->
+<header class="pg-head">
+  <p class="pg-head-eyebrow">Brand Identity</p>
+  <h1>Solvinet.id — Logo System</h1>
+  <p>Network topology icon · organic blob · blue → purple gradient · Sora typeface</p>
 </header>
 
-<div class="grid">
 
-  <!-- OPSI A -->
-  <div class="card card-recommended">
-    <div class="card-hero hero-a">
-      <div class="badge">Opsi A</div>
-      <div class="rec-badge">⭐ Rekomendasi</div>
-      <div class="hero-logo">Solvinet<span>.id</span></div>
-    </div>
-    <div class="swatches">
-      <div class="swatch a1"><span class="swatch-label">Sky Blue</span></div>
-      <div class="swatch a2"><span class="swatch-label">Fresh Green</span></div>
-      <div class="swatch a3"><span class="swatch-label">Navy Soft</span></div>
-      <div class="swatch a4"><span class="swatch-label">Off White</span></div>
-      <div class="swatch a5"><span class="swatch-label">Bright Cyan</span></div>
-    </div>
-    <div class="color-list">
-      <div class="color-row">
-        <div class="color-dot a1"></div>
-        <div class="color-info"><div class="color-role">Primary</div><div class="color-name">Sky Blue</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#1E9EE6</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot a2"></div>
-        <div class="color-info"><div class="color-role">Secondary</div><div class="color-name">Fresh Green</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#2EC07A</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot a3"></div>
-        <div class="color-info"><div class="color-role">Dark / Text</div><div class="color-name">Navy Soft</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#1A2E44</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot a4" style="border:1px solid #CBD8E4"></div>
-        <div class="color-info"><div class="color-role">Background</div><div class="color-name">Off White</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#F4F8FC</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot a5"></div>
-        <div class="color-info"><div class="color-role">Accent / CTA</div><div class="color-name">Bright Cyan</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#00C2E0</div>
-      </div>
-    </div>
-    <div class="mock-ui mock-a">
-      <div class="m-header">
-        <span>Solvinet.id</span>
-        <div class="dot-group"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-      </div>
-      <div class="m-tag">Paket Hemat</div>
-      <div class="m-title">Internet 50 Mbps</div>
-      <div class="m-sub">Cocok untuk rumahan & usaha kecil</div>
-      <div class="m-price">Rp 199.000<span style="font-size:11px;font-weight:500;color:#6B8EA8">/bulan</span></div>
-      <button class="m-btn">Langganan</button>
-      <button class="m-btn-2">Detail</button>
-    </div>
-    <div class="card-footer">
-      <p><strong>Kesan:</strong> Teknologi yang segar & ramah. Biru = kepercayaan, Hijau = hemat & positif. <strong>Unik di antara kompetitor lokal.</strong></p>
-    </div>
+<!-- ═══════════════════════════
+     § 1  FULL LOGO
+═══════════════════════════ -->
+<section class="section" id="s-main">
+  <p class="section-label">Full Logo — Light Background</p>
+  <div class="panel">
+    <svg viewBox="0 0 370 130" width="370" height="130"
+         xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="Solvinet.id full logo">
+      <use href="#sym-logo"/>
+    </svg>
   </div>
+</section>
 
-  <!-- OPSI B -->
-  <div class="card">
-    <div class="card-hero hero-b">
-      <div class="badge">Opsi B</div>
-      <div class="hero-logo">Solvinet<span>.id</span></div>
+
+<!-- ═══════════════════════════
+     § 2  SIZE VARIANTS
+═══════════════════════════ -->
+<section class="section" id="s-sizes">
+  <p class="section-label">Size Variants — Scalability Test</p>
+  <div class="panel">
+
+    <!-- 100% -->
+    <div class="v-item">
+      <svg viewBox="0 0 370 130" width="370" height="130"
+           xmlns="http://www.w3.org/2000/svg" aria-label="Logo 100%">
+        <use href="#sym-logo"/>
+      </svg>
+      <span class="v-label">100% &nbsp;·&nbsp; 370 px</span>
     </div>
-    <div class="swatches">
-      <div class="swatch b1"><span class="swatch-label">Ocean Blue</span></div>
-      <div class="swatch b2"><span class="swatch-label">Warm Orange</span></div>
-      <div class="swatch b3"><span class="swatch-label">Charcoal</span></div>
-      <div class="swatch b4"><span class="swatch-label">Warm White</span></div>
-      <div class="swatch b5"><span class="swatch-label">Light Blue</span></div>
+
+    <div class="v-separator"></div>
+
+    <!-- 60% -->
+    <div class="v-item">
+      <svg viewBox="0 0 370 130" width="222" height="78"
+           xmlns="http://www.w3.org/2000/svg" aria-label="Logo 60%">
+        <use href="#sym-logo"/>
+      </svg>
+      <span class="v-label">60% &nbsp;·&nbsp; 222 px</span>
     </div>
-    <div class="color-list">
-      <div class="color-row">
-        <div class="color-dot b1"></div>
-        <div class="color-info"><div class="color-role">Primary</div><div class="color-name">Ocean Blue</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#0B72B9</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot b2"></div>
-        <div class="color-info"><div class="color-role">Secondary</div><div class="color-name">Warm Orange</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#F5821F</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot b3"></div>
-        <div class="color-info"><div class="color-role">Dark / Text</div><div class="color-name">Charcoal</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#222831</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot b4" style="border:1px solid #DDD"></div>
-        <div class="color-info"><div class="color-role">Background</div><div class="color-name">Warm White</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#FAFAFA</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot b5"></div>
-        <div class="color-info"><div class="color-role">Accent / CTA</div><div class="color-name">Light Blue</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#4DAEE8</div>
-      </div>
+
+    <div class="v-separator"></div>
+
+    <!-- 30% -->
+    <div class="v-item">
+      <svg viewBox="0 0 370 130" width="111" height="39"
+           xmlns="http://www.w3.org/2000/svg" aria-label="Logo 30%">
+        <use href="#sym-logo"/>
+      </svg>
+      <span class="v-label">30% &nbsp;·&nbsp; 111 px</span>
     </div>
-    <div class="mock-ui mock-b">
-      <div class="m-header">
-        <span>Solvinet.id</span>
-        <div class="dot-group"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-      </div>
-      <div class="m-tag">Paket Hemat</div>
-      <div class="m-title">Internet 50 Mbps</div>
-      <div class="m-sub">Cocok untuk rumahan & usaha kecil</div>
-      <div class="m-price">Rp 199.000<span style="font-size:11px;font-weight:500;color:#888">/bulan</span></div>
-      <button class="m-btn">Langganan</button>
-      <button class="m-btn-2">Detail</button>
-    </div>
-    <div class="card-footer">
-      <p><strong>Kesan:</strong> Profesional tapi hangat dan merakyat. Oranye memberi energi & keakraban. Mirip IndiHome tapi lebih modern & bersih.</p>
-    </div>
+
   </div>
+</section>
 
-  <!-- OPSI C -->
-  <div class="card">
-    <div class="card-hero hero-c">
-      <div class="badge">Opsi C</div>
-      <div class="hero-logo">Solvinet<span>.id</span></div>
-    </div>
-    <div class="swatches">
-      <div class="swatch c1"><span class="swatch-label">Electric Blue</span></div>
-      <div class="swatch c2"><span class="swatch-label">Soft Purple</span></div>
-      <div class="swatch c3"><span class="swatch-label">Dark Slate</span></div>
-      <div class="swatch c4"><span class="swatch-label">Pure White</span></div>
-      <div class="swatch c5"><span class="swatch-label">Indigo Light</span></div>
-    </div>
-    <div class="color-list">
-      <div class="color-row">
-        <div class="color-dot c1"></div>
-        <div class="color-info"><div class="color-role">Primary</div><div class="color-name">Electric Blue</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#2563EB</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot c2"></div>
-        <div class="color-info"><div class="color-role">Secondary</div><div class="color-name">Soft Purple</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#7C3AED</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot c3"></div>
-        <div class="color-info"><div class="color-role">Dark / Text</div><div class="color-name">Dark Slate</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#1E293B</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot c4" style="border:1px solid #E2E8F0"></div>
-        <div class="color-info"><div class="color-role">Background</div><div class="color-name">Pure White</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#FFFFFF</div>
-      </div>
-      <div class="color-row">
-        <div class="color-dot c5"></div>
-        <div class="color-info"><div class="color-role">Accent / CTA</div><div class="color-name">Indigo Light</div></div>
-        <div class="color-hex" onclick="copyHex(this)">#818CF8</div>
-      </div>
-    </div>
-    <div class="mock-ui mock-c">
-      <div class="m-header">
-        <span>Solvinet.id</span>
-        <div class="dot-group"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-      </div>
-      <div class="m-tag">Paket Hemat</div>
-      <div class="m-title">Internet 50 Mbps</div>
-      <div class="m-sub">Cocok untuk rumahan & usaha kecil</div>
-      <div class="m-price">Rp 199.000<span style="font-size:11px;font-weight:500;color:#94A3B8">/bulan</span></div>
-      <button class="m-btn">Langganan</button>
-      <button class="m-btn-2">Detail</button>
-    </div>
-    <div class="card-footer">
-      <p><strong>Kesan:</strong> Inovatif & tech-forward. Gradien biru-ungu populer di brand teknologi global. Lebih premium, kurang "merakyat".</p>
-    </div>
+
+<!-- ═══════════════════════════
+     § 3  DARK BACKGROUND
+═══════════════════════════ -->
+<section class="section" id="s-dark">
+  <p class="section-label">Dark Background (#1E293B) — Contrast Test</p>
+  <div class="panel dark">
+    <svg viewBox="0 0 370 130" width="370" height="130"
+         xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="Solvinet.id logo on dark background">
+      <use href="#sym-logo-dk"/>
+    </svg>
   </div>
+</section>
 
+
+<!-- ═══════════════════════════
+     § 4  ICON MARK — STANDALONE
+═══════════════════════════ -->
+<section class="section" id="s-icon">
+  <p class="section-label">Icon Mark — Standalone Sizes</p>
+  <div class="panel" style="gap: 36px;">
+
+    <!-- 120 px -->
+    <div class="v-item">
+      <svg viewBox="0 0 120 120" width="120" height="120"
+           xmlns="http://www.w3.org/2000/svg" aria-label="Icon mark 120 px">
+        <use href="#sym-icon"/>
+      </svg>
+      <span class="v-label">120 px</span>
+    </div>
+
+    <div class="v-separator"></div>
+
+    <!-- 64 px — app icon -->
+    <div class="v-item">
+      <svg viewBox="0 0 120 120" width="64" height="64"
+           xmlns="http://www.w3.org/2000/svg" aria-label="Icon mark 64 px">
+        <use href="#sym-icon"/>
+      </svg>
+      <span class="v-label">64 px</span>
+    </div>
+
+    <div class="v-separator"></div>
+
+    <!-- 32 px — favicon -->
+    <div class="v-item">
+      <svg viewBox="0 0 120 120" width="32" height="32"
+           xmlns="http://www.w3.org/2000/svg" aria-label="Icon mark 32 px (favicon)">
+        <use href="#sym-icon"/>
+      </svg>
+      <span class="v-label">32 px</span>
+    </div>
+
+    <div class="v-separator"></div>
+
+    <!-- 120 px on dark swatch -->
+    <div class="v-item">
+      <svg viewBox="0 0 120 120" width="120" height="120"
+           xmlns="http://www.w3.org/2000/svg"
+           aria-label="Icon mark on dark background"
+           style="border-radius: 20px; background: #1E293B;">
+        <use href="#sym-icon"/>
+      </svg>
+      <span class="v-label">Dark BG</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════
+     DOWNLOAD BUTTON
+═══════════════════════════ -->
+<div class="dl-wrap">
+  <button id="dl-btn" onclick="downloadSVG()">
+    <!-- Download icon (arrow + tray) -->
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v13"/>
+      <polyline points="7 11 12 16 17 11"/>
+      <line x1="4" y1="20" x2="20" y2="20"/>
+    </svg>
+    Download SVG
+  </button>
 </div>
 
-<footer>
-  <span>Solvinet.id Brand Identity — Color Palette Preview</span><br>
-  Klik HEX code untuk menyalin • Hover swatch untuk nama warna
-</footer>
 
 <script>
-  function copyHex(el) {
-    const hex = el.textContent.trim();
-    navigator.clipboard.writeText(hex).then(() => {
-      const orig = el.textContent;
-      el.textContent = 'Copied!';
-      el.style.color = '#4ade80';
-      setTimeout(() => {
-        el.textContent = orig;
-        el.style.color = '';
-      }, 1200);
-    });
+  /**
+   * downloadSVG()
+   * ─────────────────────────────────────────────────────────────────────
+   * Builds a self-contained SVG string for the Solvinet.id logo
+   * (full logo, light-background version) and downloads it.
+   *
+   * The SVG string is constructed explicitly (not extracted from the DOM)
+   * so the output is clean, comment-annotated, and portable.
+   *
+   * A Google Font @import is embedded in a <style> tag inside the SVG
+   * so the file renders correctly when opened standalone in a browser.
+   * ─────────────────────────────────────────────────────────────────────
+   */
+  function downloadSVG() {
+
+    /* ── SVG source string ──────────────────────────────────────────── */
+    const src = `<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Solvinet.id — Brand Logo
+  Concept : Organic blob · network topology · sparkle accent
+  Gradient : #2563EB (bottom-left) → #7C3AED (top-right)
+  Font     : Sora — "Solvinet" bold 700 + ".id" regular 400
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 370 130"
+     width="370" height="130"
+     role="img"
+     aria-label="Solvinet.id logo">
+
+  <defs>
+    <!-- Sora font (embedded for standalone portability) -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&amp;display=swap');
+    </style>
+
+    <!-- Brand gradient: Electric Blue → Soft Purple, diagonal -->
+    <linearGradient id="g" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ════════════════════════════════════════
+       ICON MARK  (120×120, offset 5 5)
+  ════════════════════════════════════════ -->
+  <g transform="translate(5,5)">
+
+    <!-- Organic blob — 8-anchor cubic-bezier, gradient fill -->
+    <path d="M 62,8 C 78,4 90,8 98,16 C 106,24 114,40 112,52 C 110,64 104,76 98,86 C 90,96 78,108 66,110 C 54,112 40,110 30,102 C 20,94 10,80 8,66 C 6,50 12,36 20,26 C 30,18 48,10 62,8 Z"
+          fill="url(#g)"/>
+
+    <!-- Network edges — 12 connections, white stroke 3px rounded -->
+    <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round">
+      <line x1="68" y1="26" x2="44" y2="34"/>
+      <line x1="44" y1="34" x2="28" y2="58"/>
+      <line x1="28" y1="58" x2="56" y2="58"/>
+      <line x1="56" y1="58" x2="86" y2="72"/>
+      <line x1="86" y1="72" x2="64" y2="90"/>
+      <line x1="64" y1="90" x2="36" y2="86"/>
+      <line x1="36" y1="86" x2="28" y2="58"/>
+      <line x1="68" y1="26" x2="80" y2="44"/>
+      <line x1="80" y1="44" x2="56" y2="58"/>
+      <line x1="80" y1="44" x2="86" y2="72"/>
+      <line x1="56" y1="58" x2="36" y2="86"/>
+      <line x1="44" y1="34" x2="56" y2="58"/>
+    </g>
+
+    <!-- Network nodes — 8 nodes, hub (N4) is r=7 -->
+    <g fill="white">
+      <circle cx="68" cy="26" r="5"/>
+      <circle cx="44" cy="34" r="5"/>
+      <circle cx="28" cy="58" r="5"/>
+      <circle cx="56" cy="58" r="7"/>
+      <circle cx="80" cy="44" r="5"/>
+      <circle cx="86" cy="72" r="5"/>
+      <circle cx="64" cy="90" r="5"/>
+      <circle cx="36" cy="86" r="5"/>
+    </g>
+
+    <!-- Sparkle ✦ — 4-point star via quadratic bezier, top-right -->
+    <path d="M 88,14 Q 90.5,19.5 96,22 Q 90.5,24.5 88,30 Q 85.5,24.5 80,22 Q 85.5,19.5 88,14 Z"
+          fill="white"/>
+
+  </g>
+
+  <!-- ════════════════════════════════════════
+       WORDMARK
+       x = 5 (icon-left) + 120 (icon-w) + 16 (gap) = 141
+       y = 5 (icon-top)  + 60  (icon-center)       = 65
+  ════════════════════════════════════════ -->
+  <text x="141" y="65"
+        dominant-baseline="central"
+        font-family="'Sora', sans-serif"
+        font-size="32"
+        letter-spacing="-0.5">
+    <tspan font-weight="700" fill="#1E293B">Solvinet</tspan>
+    <tspan font-weight="400" fill="#7C3AED">.id</tspan>
+  </text>
+
+</svg>`;
+
+    /* ── Trigger download ───────────────────────────────────────────── */
+    const blob = new Blob([src], { type: 'image/svg+xml;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'solvinet-logo.svg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);   // free memory immediately
+
+    /* ── Button feedback: turns teal for 2.5 s ─────────────────────── */
+    const btn      = document.getElementById('dl-btn');
+    const origHTML = btn.innerHTML;
+    btn.innerHTML  = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      Downloaded!`;
+    btn.style.background  = 'linear-gradient(135deg, #059669, #0D9488)';
+    btn.style.boxShadow   = '0 8px 28px rgba(5,150,105,0.38)';
+    setTimeout(() => {
+      btn.innerHTML       = origHTML;
+      btn.style.background = '';
+      btn.style.boxShadow  = '';
+    }, 2500);
   }
 </script>
 
